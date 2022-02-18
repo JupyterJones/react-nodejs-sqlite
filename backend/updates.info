@@ -1,0 +1,24 @@
+node version v14.18.2
+All working well: no outdated
+
+$ npm list
+backend@1.0.0 /home/jack/Desktop/react-nodejs-sqlite/backend
+├── @mapbox/node-pre-gyp@1.0.8
+├── cors@2.8.5
+├── express@4.17.3
+├── har-validator@5.1.5
+├── nodemon@2.0.15
+├── request@2.88.2
+├── sequelize-cli@6.4.1
+├── sequelize@6.16.1
+├── sqlite3@5.0.2
+├── tar@6.1.11
+└── uuid@8.3.2
+
+
+Had to change:
+// Original:
+//pre update const model = sequelize['import'](path.join(__dirname, file));
+//changed to:
+  const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
+// Change per https://stackoverflow.com/questions/62917111/sequelize-import-is-not-a-function
